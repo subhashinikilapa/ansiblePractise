@@ -1,0 +1,6 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: remove httpd
+      command: yum remove httpd -y

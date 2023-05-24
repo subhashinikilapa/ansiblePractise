@@ -1,0 +1,13 @@
+--- #vars playbook
+- hosts: webservers
+  user: ansible
+  become: yes
+  connection: ssh
+  vars:
+    pkgname: httpd
+  tasks:
+    - name: removing httpd on webservers
+      action: yum name='{{pkgname}}' state=present
+      ignore_errors: yes
+    - name: installing httpd on webservers
+      action: yum name='{{pkgname}}' state=absent
